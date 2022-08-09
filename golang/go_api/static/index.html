@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./index.js">
+
+    </script>
+  </head>
+
+  <body class="bg-gray-300 m-4 p-4 flex flex-col">
+    <h1 class="text-3xl text-slate-500 text-center">This is a static page</h1>
+    <h2 class="text-xl text-center text-slate-500">Running on a <i class="text-2xl italic text-blue-400">GO</i> server</h2>
+
+    <p class="text-center mt-4 text-slate-700">Try out this swanky counter</p>
+
+    <div class="flex flex-row my-4 justify-center space-x-4">
+      <button class="p-4 rounded rounded-lg bg-red-500" onclick="decrementX()">
+        -
+      </button>
+      <p id="count" class="my-auto">0</p>
+      <button class="p-4 rounded rounded-lg bg-blue-200" onclick="incrementX()">
+        +
+      </button>
+    </div>
+    <h1 class="animate-pulse text-center">
+      Some funky animation from <a class="underline text-blue-500 hover:text-blue-600 visited:text-purple-400" href="https://tailwindcss.com">TailwindCSS</a>
+    </h1>
+    
+    <div class="flex flex-row justify-center my-6">
+      <div class="flex flex-col">
+        <p class="text-lg text-center">Movies:</p>
+        <div class="grid grid-flow-row-dense grid-cols-4 gap-6" id="movies-grid">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

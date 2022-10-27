@@ -1,0 +1,8 @@
+{
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "golang.go",
+    "gopls": {
+        "ui.semanticTokens": true,
+        "formatting.gofumpt": true,
+    }
+}

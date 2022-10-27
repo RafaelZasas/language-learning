@@ -1,4 +1,4 @@
-package main
+package ll
 
 import (
 	"fmt"
@@ -42,7 +42,6 @@ func (l *linkedList) remove(value int) {
 
 	for current := l.head; current != nil; current = current.next {
 		if current.value == value {
-
 			if l.head == current {
 				l.head = current.next
 			} else {
@@ -73,8 +72,7 @@ func (l linkedList) String() string {
 	return sb.String()
 }
 
-func main() {
-
+func Run() {
 	l := linkedList{}
 	l.add(1)
 	l.add(2)

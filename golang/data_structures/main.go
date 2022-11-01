@@ -17,10 +17,10 @@ func main() {
 
 	switch args[0] {
 	case "ll":
-		fmt.Println("running linked list")
+		fmt.Printf("running linked list\n\n")
 		ll.Run()
 	case "bst":
-		fmt.Println("running binary search tree")
+		fmt.Printf("running binary search tree\n\n")
 		bst.Run()
 
 	default:

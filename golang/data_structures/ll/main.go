@@ -5,21 +5,21 @@ import (
 	"strings"
 )
 
-type node struct {
-	value int
-	next  *node
+type node[T comparable] struct {
+	value T
+	next  *node[T]
 }
 
-func (n node) String() string {
-	return fmt.Sprintf("%d", n.value)
+func (n node[T]) String() string {
+	return fmt.Sprintf("%v ", n.value)
 }
 
-type linkedList struct {
-	head *node
+type linkedList[T comparable] struct {
+	head *node[T]
 }
 
-func (l *linkedList) add(value int) {
-	newNode := new(node)
+func (l *linkedList[T]) add(value T) {
+	newNode := new(node[T])
 	newNode.value = value
 	// This is redundant but leaving for reference
 	// newNode.next = nil
@@ -37,8 +37,8 @@ func (l *linkedList) add(value int) {
 	}
 }
 
-func (l *linkedList) remove(value int) {
-	var prev *node
+func (l *linkedList[T]) remove(value T) {
+	var prev *node[T]
 
 	for current := l.head; current != nil; current = current.next {
 		if current.value == value {
@@ -54,7 +54,7 @@ func (l *linkedList) remove(value int) {
 	}
 }
 
-func (l linkedList) get(value int) *node {
+func (l linkedList[T]) get(value T) *node[T] {
 	for iterator := l.head; iterator != nil; iterator = iterator.next {
 		if iterator.value == value {
 			return iterator
@@ -63,7 +63,7 @@ func (l linkedList) get(value int) *node {
 	return nil
 }
 
-func (l linkedList) String() string {
+func (l linkedList[T]) String() string {
 	sb := strings.Builder{}
 
 	for iterator := l.head; iterator != nil; iterator = iterator.next {
@@ -73,13 +73,26 @@ func (l linkedList) String() string {
 }
 
 func Run() {
-	l := linkedList{}
-	l.add(1)
-	l.add(2)
-	l.add(3)
+	l := linkedList[string]{}
+	l.add("B")
+	l.add("A")
+	l.add("C")
+	fmt.Printf("Creating string linked list: %v\n", l)
+
+	fmt.Printf("Getting \"A\" from linked list: %v\n", *l.get("A"))
+	fmt.Println("Removing \"A\" from linked list")
+	l.remove("A")
 	fmt.Println(l)
-	fmt.Println(*(l.get(3)))
-	l.remove(1)
-	fmt.Println(l)
-	fmt.Println((l.head))
+	fmt.Printf("Head of linked list: %v\n\n", l.head)
+
+	t := linkedList[int]{}
+	t.add(2)
+	t.add(4)
+	t.add(1)
+	fmt.Printf("Creating an integer linked list: %v\n", t)
+	fmt.Printf("Getting 4 from linked list: %v\n", *t.get(4))
+	fmt.Println("Removing \"4\" from linked list")
+	t.remove(4)
+	fmt.Println(t)
+	fmt.Printf("Head of linkedlist: %v", l.head)
 }
